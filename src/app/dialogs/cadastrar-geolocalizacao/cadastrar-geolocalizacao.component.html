@@ -8,28 +8,28 @@
                         <p class="card-category">Preencha os campos</p>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form [formGroup]="form" (ngSubmit)="cadastrarInformacoesMunicipio()">
                            
                             <div class="row">
                                 <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="População Estimada" type="number">
+                                    <input matInput placeholder="População Estimada" type="number" formControlName="populacaoEstimada">
                                   </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="População Último Censo" type="number">
+                                    <input matInput placeholder="População Último Censo" type="number" formControlName="populacaoUltimoCenso">
                                   </mat-form-field>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Densidade Demográfica" type="number">
+                                      <input matInput placeholder="Densidade Demográfica" type="number" formControlName="densidadeDemografica">
                                     </mat-form-field>
                                   </div>
                             </div>
                            
                       
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="cadastrarInformacoesMunicipio()">Atualizar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" type="submit">Atualizar</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

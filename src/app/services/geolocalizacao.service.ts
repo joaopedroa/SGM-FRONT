@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { InfoMunicipio } from 'app/models/InfoMunicipio';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -22,5 +23,9 @@ export class GeolocalizacaoService {
     headers.set('Accept', 'image/svg+xml');
     return this.http.get(`${environment.apiUrl}/sgm-georeferenciamento-service/api/v1/localidades/malhas/municipios/${id}`,  {headers, responseType: 'text'}).toPromise();
     
+  }
+
+  cadastrarInfoMunicipio(info:InfoMunicipio){
+    return this.http.post(`${environment.apiUrl}/sgm-georeferenciamento-service/api/v1/info/municipio`, info);
   }
 }
