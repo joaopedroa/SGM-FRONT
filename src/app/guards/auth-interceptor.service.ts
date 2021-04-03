@@ -13,6 +13,7 @@ export class AuthInterceptorService implements HttpInterceptor {
  
     let tokenJWT = window.localStorage.getItem("token");
 
+
     if (tokenJWT) {
         request = request.clone({
             setHeaders: { 

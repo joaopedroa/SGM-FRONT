@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -26,6 +26,8 @@ import { LoginComponent } from './login/login.component';
 import { GeolocalizacaoComponent } from './geolocalizacao/geolocalizacao.component';
 import { CarteiraComponent } from './carteira/carteira.component';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { AuthInterceptorService } from './guards/auth-interceptor.service';
+import { CadastrarGeolocalizacaoComponent } from './dialogs/cadastrar-geolocalizacao/cadastrar-geolocalizacao.component';
 
 @NgModule({
   imports: [
@@ -44,11 +46,14 @@ import { AuthGuardService } from './guards/auth-guard.service';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    GeolocalizacaoComponent,
-    CarteiraComponent,
+    CarteiraComponent
 
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,14 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { AuthGuardService } from 'app/guards/auth-guard.service';
+import { GeolocalizacaoComponent } from 'app/geolocalizacao/geolocalizacao.component';
+import { AuthInterceptorService } from 'app/guards/auth-interceptor.service';
+import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CadastrarGeolocalizacaoComponent } from 'app/dialogs/cadastrar-geolocalizacao/cadastrar-geolocalizacao.component';
 
 @NgModule({
   imports: [
@@ -30,6 +37,10 @@ import { AuthGuardService } from 'app/guards/auth-guard.service';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatGridListModule,
+    MatCardModule,
+    MatTabsModule,
+    MatDialogModule
   ],
   declarations: [
     DashboardComponent,
@@ -38,9 +49,11 @@ import { AuthGuardService } from 'app/guards/auth-guard.service';
     TypographyComponent,
     IconsComponent,
     MapsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    GeolocalizacaoComponent,
+    CadastrarGeolocalizacaoComponent
   ],
-  providers: [AuthGuardService]
+  providers: [AuthGuardService, AuthInterceptorService]
 })
 
 export class AdminLayoutModule {}

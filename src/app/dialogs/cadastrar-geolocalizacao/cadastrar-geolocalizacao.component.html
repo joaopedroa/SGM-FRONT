@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Editar Informações da cidade</h4>
+                        <p class="card-category">Preencha os campos</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                           
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="População Estimada" type="number">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="População Último Censo" type="number">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Densidade Demográfica" type="number">
+                                    </mat-form-field>
+                                  </div>
+                            </div>
+                           
+                      
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="cadastrarInformacoesMunicipio()">Atualizar</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="javascript:void(0)">
+                            <img class="img" src="./assets/img/cidade-login.jpg" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">{{data.estado.nome}}</h6>
+                        <h4 class="card-title">{{data.municipio.nome}}</h4>
+                        <p class="card-description">
+                            Atualizar aqui as informações da cidade.
+                        </p>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

@@ -5,3 +5,18 @@
     height: calc(100vh - 70px);
     margin-top: 70px;
 }
+
+.example-card {
+    max-width: 400px;
+  }
+  
+.example-header-image {
+    background-image: url('../../assets/img/cidade-icon.png');
+    background-size: cover;
+}
+
+svg {
+    position: absolute;
+    left: 5px;
+    bottom: 50px;
+}
