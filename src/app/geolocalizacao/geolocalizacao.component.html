@@ -1,4 +1,4 @@
-<div id="geo" style = "margin-bottom:30px;">
+<div id="geo" style = "margin-bottom:30px;" >
 
   <mat-grid-list cols="4" rowHeight="100px">
     <mat-grid-tile
@@ -27,6 +27,7 @@
     <mat-grid-tile
     colspan="1"
     rowspan="6"
+    *ngIf="svg"
     >
     
     <mat-card class="example-card" >
@@ -40,9 +41,9 @@
           <p>
            <b>Estado:</b><span> {{selectEstado.nome}} - ({{(selectEstado.sigla)}})</span><br>
            <b>Município:</b><span> {{selectMunicipio.nome}}</span><br>
-           <b>População Estimada:</b><span> {{selectEstado.nome}} - ({{(selectEstado.sigla)}})</span><br>
-           <b>População Último Censo:</b><span> {{selectEstado.nome}} - ({{(selectEstado.sigla)}})</span><br>
-           <b>Densidade Demográfica:</b><span> {{selectEstado.nome}} - ({{(selectEstado.sigla)}})</span><br>
+           <b>População Estimada:</b><span> {{selectInfo.populacaoEstimada}}</span><br>
+           <b>População Último Censo:</b><span> {{selectInfo.populacaoUltimoCenso}}</span><br>
+           <b>Densidade Demográfica:</b><span> {{selectInfo.densidadeDemografica}}</span><br>
           </p>
         </mat-card-content>
         <mat-card-actions>

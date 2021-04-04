@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CadastrarGeolocalizacaoComponent } from 'app/dialogs/cadastrar-geolocalizacao/cadastrar-geolocalizacao.component';
 import { Estado } from 'app/models/Estado';
+import { InfoMunicipio } from 'app/models/InfoMunicipio';
 import { Municipio } from 'app/models/Municipio';
 import { GeolocalizacaoService } from 'app/services/geolocalizacao.service';
 export interface Tile {
@@ -26,7 +27,7 @@ export class GeolocalizacaoComponent implements OnInit {
   selectEstado: Estado = new Estado();
   selectMunicipio: Municipio = new Municipio();
   svg:SafeHtml;
-
+  selectInfo: InfoMunicipio = new InfoMunicipio(0,0,0);
 
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -53,16 +54,22 @@ export class GeolocalizacaoComponent implements OnInit {
   changeSelectEstado(){
    this.geoService.getCidadesPorIdDoEstado(this.selectEstado.id).subscribe(data =>{
      this.municipios = data;
+     this.svg = null;
    })
   }
 
   changeSelectMunicipio(){
-    console.log(this.selectMunicipio.id)
     this.geoService.getMalhaPorIdMunicipio(this.selectMunicipio.id).then(data =>{
-      console.log(data);
       data = data.replace('width="1080"', 'width="500"').replace('height="1080"','height="500"' );
       this.svg = this.sanitizer.bypassSecurityTrustHtml(data);
-
+    });
+    this.geoService.getInfoMunicipioPorId(this.selectMunicipio.id).subscribe(data =>{
+      if(data != null){
+        this.selectInfo = new InfoMunicipio(data.populacaoEstimada,data.populacaoUltimoCenso,data.densidadeDemografica);
+      }else{
+        this.selectInfo = new InfoMunicipio(0,0,0);
+      }
+        
     });
   }
 
@@ -72,7 +79,11 @@ export class GeolocalizacaoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+
+      this.selectInfo = JSON.parse(result);
+      this.selectInfo.densidadeDemografica = new Intl.NumberFormat().format(this.selectInfo.densidadeDemografica);
+      this.selectInfo.populacaoEstimada = new Intl.NumberFormat().format(this.selectInfo.populacaoEstimada);
+      this.selectInfo.populacaoUltimoCenso = new Intl.NumberFormat().format(this.selectInfo.populacaoUltimoCenso);
     });
   }
 

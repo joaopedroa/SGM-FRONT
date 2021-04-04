@@ -28,4 +28,8 @@ export class GeolocalizacaoService {
   cadastrarInfoMunicipio(info:InfoMunicipio){
     return this.http.post(`${environment.apiUrl}/sgm-georeferenciamento-service/api/v1/info/municipio`, info);
   }
+
+  getInfoMunicipioPorId(id:any){
+    return this.http.get<any>(`${environment.apiUrl}/sgm-georeferenciamento-service/api/v1/info/municipio/${id}`);
+  }
 }

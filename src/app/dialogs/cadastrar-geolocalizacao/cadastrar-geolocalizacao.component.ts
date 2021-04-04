@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Estado } from 'app/models/Estado';
 import { InfoMunicipio } from 'app/models/InfoMunicipio';
 import { Municipio } from 'app/models/Municipio';
@@ -18,9 +18,10 @@ export interface DialogData {
 })
 export class CadastrarGeolocalizacaoComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: DialogData, private geoService: GeolocalizacaoService) { }
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: DialogData, private geoService: GeolocalizacaoService,
+  public dialogRef: MatDialogRef<CadastrarGeolocalizacaoComponent>) { }
 
-  info:InfoMunicipio = new InfoMunicipio();
+  info:InfoMunicipio = new InfoMunicipio(0,0,0);
   form: FormGroup;
 
   ngOnInit(): void {
@@ -37,7 +38,11 @@ export class CadastrarGeolocalizacaoComponent implements OnInit {
     this.info.municipioId = this.data.municipio.id;
     
     this.geoService.cadastrarInfoMunicipio(this.info).subscribe(data =>{
-      console.log("cadastrado");
+      this.closeDialog();
     })
+  }
+
+  closeDialog() {
+    this.dialogRef.close(JSON.stringify(this.info));
   }
 }
