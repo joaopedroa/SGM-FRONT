@@ -18,13 +18,28 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-
+    
     this.loginService.login(this.email, this.senha).subscribe(data =>{
+
+      let tokenDecoded = this.decodeToken(data.access_token);
+      console.log("token", tokenDecoded);
       window.localStorage.setItem("token", data.access_token);
+      window.localStorage.setItem("user", tokenDecoded['user_name']);
+      window.localStorage.setItem("regras", tokenDecoded['authorities']);
+     
       this.router.navigate(["/geolocalizacao"]);
     }, err =>{
       alert("Usuário ou Senha incorretos! Favor, verificar bot SGM ou contatar administrador");
     })
   }
+
+  decodeToken(token){
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+      return null;
+    }
+  }
+  
 
 }

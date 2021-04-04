@@ -21,4 +21,8 @@ export class CarteiraService {
   deleteProjeto(projeto:Projeto){
     return this.http.delete<any>(`${environment.apiUrl}/sgm-carteiraprojetos-service/api/v1/projetos/${projeto.id}`);
   }
+
+  getTotalProjetosCadastrados(){
+    return this.http.get(`${environment.apiUrl}/sgm-carteiraprojetos-service/api/v1/projetos/total`);
+  }
 }

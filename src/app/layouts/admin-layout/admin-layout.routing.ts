@@ -1,12 +1,6 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
-import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
-import { IconsComponent } from '../../icons/icons.component';
-import { MapsComponent } from '../../maps/maps.component';
-import { NotificationsComponent } from '../../notifications/notifications.component';
 import { LoginComponent } from 'app/login/login.component';
 import { GeolocalizacaoComponent } from 'app/geolocalizacao/geolocalizacao.component';
 import { CarteiraComponent } from 'app/carteira/carteira.component';
@@ -57,11 +51,5 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'carteira-projetos', component: CarteiraComponent, canActivate: [AuthGuardService] },
     { path: 'geolocalizacao', component: GeolocalizacaoComponent, canActivate: [AuthGuardService] },
-    { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuardService] },
-    { path: 'user-profile',   component: UserProfileComponent, canActivate: [AuthGuardService] },
-    { path: 'table-list',     component: TableListComponent, canActivate: [AuthGuardService] },
-    { path: 'typography',     component: TypographyComponent, canActivate: [AuthGuardService] },
-    { path: 'icons',          component: IconsComponent, canActivate: [AuthGuardService] },
-    { path: 'maps',           component: MapsComponent, canActivate: [AuthGuardService] },
-    { path: 'notifications',  component: NotificationsComponent, canActivate: [AuthGuardService] }
+    { path: 'dashboard',      component: DashboardComponent, canActivate: [AuthGuardService] }
 ];

@@ -32,4 +32,8 @@ export class GeolocalizacaoService {
   getInfoMunicipioPorId(id:any){
     return this.http.get<any>(`${environment.apiUrl}/sgm-georeferenciamento-service/api/v1/info/municipio/${id}`);
   }
+
+  getTotalInfosCadastrado(){
+    return this.http.get<any>(`${environment.apiUrl}/sgm-georeferenciamento-service/api/v1/info/total`);
+  }
 }
