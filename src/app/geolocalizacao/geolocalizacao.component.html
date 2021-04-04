@@ -57,9 +57,27 @@
     <mat-grid-tile
         colspan="3"
         rowspan="7"
-        >
-     
-        <div class="svg" [innerHTML]="svg"></div>
+        *ngIf="svg">
+        <div class="main-content">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header card-header-danger">
+                              <h4 class="card-title">Malha Geográfica</h4>
+                             
+                          </div>
+                          <div class="card-body">
+                            <div class="svg" [innerHTML]="svg"></div>
+                          </div>
+                      </div>
+                  </div>
+               
+              </div>
+          </div>
+        </div>
+        
+       
     </mat-grid-tile>
     
   </mat-grid-list>

@@ -24,7 +24,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CadastrarGeolocalizacaoComponent } from 'app/dialogs/cadastrar-geolocalizacao/cadastrar-geolocalizacao.component';
-
+import { CarteiraComponent } from 'app/carteira/carteira.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table' ;
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +44,12 @@ import { CadastrarGeolocalizacaoComponent } from 'app/dialogs/cadastrar-geolocal
     MatGridListModule,
     MatCardModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSortModule
+    
   ],
   declarations: [
     DashboardComponent,
@@ -51,7 +60,8 @@ import { CadastrarGeolocalizacaoComponent } from 'app/dialogs/cadastrar-geolocal
     MapsComponent,
     NotificationsComponent,
     GeolocalizacaoComponent,
-    CadastrarGeolocalizacaoComponent
+    CadastrarGeolocalizacaoComponent,
+    CarteiraComponent
   ],
   providers: [AuthGuardService, AuthInterceptorService]
 })

@@ -28,6 +28,7 @@ import { CarteiraComponent } from './carteira/carteira.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { AuthInterceptorService } from './guards/auth-interceptor.service';
 import { CadastrarGeolocalizacaoComponent } from './dialogs/cadastrar-geolocalizacao/cadastrar-geolocalizacao.component';
+import { CarteiraDescriptionComponent } from './dialogs/carteira-description/carteira-description.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,7 @@ import { CadastrarGeolocalizacaoComponent } from './dialogs/cadastrar-geolocaliz
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    CarteiraComponent
+    CarteiraDescriptionComponent
 
   ],
   providers: [AuthGuardService, {
