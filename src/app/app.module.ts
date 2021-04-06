@@ -32,10 +32,7 @@ import { CarteiraDescriptionComponent } from './dialogs/carteira-description/car
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,

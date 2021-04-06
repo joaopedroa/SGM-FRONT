@@ -1,12 +1,9 @@
 <div id="geo" style = "margin-bottom:30px;" >
 
-  <mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-        colspan="3"
-        rowspan="1"
-        >
-     
-        <mat-form-field appearance="fill" style = "position: absolute; left: 5px;">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <mat-form-field appearance="fill" style = "position: absolute; left: 5px;">
             <mat-label>Estados</mat-label>
             <mat-select  [(value)]="selectEstado" (selectionChange)="changeSelectEstado()">
                 <mat-option *ngFor="let estado of estados" [value]="estado">
@@ -14,7 +11,9 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill" >
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+          <mat-form-field appearance="fill" >
             <mat-label>Cidades</mat-label>
             <mat-select [(value)]="selectMunicipio" (selectionChange)="changeSelectMunicipio()">
                 <mat-option *ngFor="let municipio of municipios" [value]="municipio">
@@ -22,63 +21,54 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    </mat-grid-tile>
-   
-    <mat-grid-tile
-    colspan="1"
-    rowspan="6"
-    *ngIf="svg"
-    >
-    
-    <mat-card class="example-card" >
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{selectMunicipio.nome}}</mat-card-title>
-          <mat-card-subtitle>{{selectEstado.nome}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="../../assets/img/cidade-login.png" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-           <b>Estado:</b><span> {{selectEstado.nome}} - ({{(selectEstado.sigla)}})</span><br>
-           <b>Município:</b><span> {{selectMunicipio.nome}}</span><br>
-           <b>População Estimada:</b><span> {{selectInfo.populacaoEstimada}}</span><br>
-           <b>População Último Censo:</b><span> {{selectInfo.populacaoUltimoCenso}}</span><br>
-           <b>Densidade Demográfica:</b><span> {{selectInfo.densidadeDemografica}}</span><br>
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button (click)="openDialog()">Editar</button>
-         
-        </mat-card-actions>
-      </mat-card>
-   
-    </mat-grid-tile>
-
-    <mat-grid-tile
-        colspan="3"
-        rowspan="7"
-        *ngIf="svg">
-        <div class="main-content">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-12">
-                      <div class="card">
-                          <div class="card-header card-header-danger">
-                              <h4 class="card-title">Malha Geográfica</h4>
-                             
-                          </div>
-                          <div class="card-body">
-                            <div class="svg" [innerHTML]="svg"></div>
-                          </div>
-                      </div>
-                  </div>
-               
-              </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="svg">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title">Malha Geográfica</h4>
+                               
+                            </div>
+                            <div class="card-body">
+                              <div class="svg" [innerHTML]="svg"></div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
           </div>
         </div>
-        
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <mat-card class="example-card" >
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{selectMunicipio.nome}}</mat-card-title>
+              <mat-card-subtitle>{{selectEstado.nome}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="../../assets/img/cidade-login.png" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+               <b>Estado:</b><span> {{selectEstado.nome}} - ({{(selectEstado.sigla)}})</span><br>
+               <b>Município:</b><span> {{selectMunicipio.nome}}</span><br>
+               <b>População Estimada:</b><span> {{selectInfo.populacaoEstimada}}</span><br>
+               <b>População Último Censo:</b><span> {{selectInfo.populacaoUltimoCenso}}</span><br>
+               <b>Densidade Demográfica:</b><span> {{selectInfo.densidadeDemografica}}</span><br>
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="openDialog()">Editar</button>
+             
+            </mat-card-actions>
+          </mat-card>
+        </div>
        
-    </mat-grid-tile>
-    
-  </mat-grid-list>
+      </div>
+    </div>
+
 </div>
